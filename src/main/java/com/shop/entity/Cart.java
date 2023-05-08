@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-public class Cart { //멤버랑 다대일 개념 왜냐하면 한사람에 장바구니에는 여러가지 상품들이 들어있다.
+public class Cart extends BaseEntity{ //멤버랑 다대일 개념 왜냐하면 한사람에 장바구니에는 여러가지 상품들이 들어있다.
     @Id
     @Column(name = "cart_id")
     @GeneratedValue(strategy = GenerationType.AUTO) //값 자동 증가

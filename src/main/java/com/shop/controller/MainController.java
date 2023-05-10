@@ -1,4 +1,4 @@
- package com.shop.controller;
+package com.shop.controller;
 
 import com.shop.dto.ItemSearchDto;
 import com.shop.dto.MainItemDto;
@@ -9,7 +9,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,10 +21,10 @@ public class MainController {
 
     private final ItemService itemService;
 
-    @GetMapping(value="/")
-    public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model){
+    @GetMapping(value = "/")
+    public String main(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(">>>>>>>>"+auth);
+        System.out.println(">>>>>>>>>" + auth);
 
         Pageable pageable = PageRequest.of(page.isPresent()?page.get():0,6);
         Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto,pageable);

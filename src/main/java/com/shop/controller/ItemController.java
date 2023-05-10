@@ -5,7 +5,6 @@ import com.shop.dto.ItemSearchDto;
 import com.shop.entity.Item;
 import com.shop.service.ItemService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -103,6 +102,13 @@ public class ItemController {
         model.addAttribute("maxPage",5);
 
         return "item/itemMng";
+    }
+
+    @GetMapping(value = "/item/{itemId}")
+    public String itemDtl(Model model,@PathVariable("itemId") Long itemId){
+        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+        model.addAttribute("item",itemFormDto);
+        return "item/itemDtl";
     }
 }
 
